@@ -1,7 +1,6 @@
 package com.example.encardv1.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -47,7 +46,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
         }
 
         public void onBind(Hits hits) {
-            Glide.with(binding.imImage).load(hits.getImageURL()).into(binding.imImage);
+            Glide.with(binding.imImage).load(hits.getLargeImageURL()).into(binding.imImage);
         }
     }
 }

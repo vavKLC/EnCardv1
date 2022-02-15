@@ -1,5 +1,6 @@
 package com.example.encardv1.network.model;
 
+
 public class Hits {
     public int id;
     public String pageURL;
