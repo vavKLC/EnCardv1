@@ -55,4 +55,6 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
 }
