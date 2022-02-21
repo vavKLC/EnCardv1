@@ -3,29 +3,29 @@ package com.example.encardv1.repository;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.encardv1.App;
+import com.example.encardv1.network.PixabayAPI;
 import com.example.encardv1.network.model.Hits;
 import com.example.encardv1.network.model.PixabayResponse;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PixaBayRepository {
+    PixabayAPI api;
 
-    static PixaBayRepository pixaBayRepository;
-
-    public static PixaBayRepository getInstance(){
-        if (pixaBayRepository == null){
-            return new PixaBayRepository();
-        }
-        return pixaBayRepository;
+    @Inject
+    public PixaBayRepository(PixabayAPI api) {
+        this.api = api;
     }
 
     public MutableLiveData<List<Hits>> getImages(String word){
         MutableLiveData<List<Hits>> listImage = new MutableLiveData<>();
-        App.retrofitClient.providerPixabayApi().getImages(word).enqueue(new Callback<PixabayResponse>() {
+        api.getImages(word).enqueue(new Callback<PixabayResponse>() {
             @Override
             public void onResponse(Call<PixabayResponse> call, Response<PixabayResponse> response) {
                 if (response.isSuccessful()){

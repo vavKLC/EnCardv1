@@ -18,6 +18,9 @@ import com.example.encardv1.databinding.FragmentWordBinding;
 import com.example.encardv1.pixabayviewmodel.PixaBayViewModel;
 
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class WordsFragment extends BaseFragment<FragmentWordBinding> {
     public static int TIME_OUT = 3000;
     private Handler handler;

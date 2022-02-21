@@ -8,6 +8,9 @@ import android.os.Bundle;
 
 import com.example.encardv1.R;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,6 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private void initNavigation() {
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
+        NavController navController = navHostFragment.  getNavController();
     }
 }
