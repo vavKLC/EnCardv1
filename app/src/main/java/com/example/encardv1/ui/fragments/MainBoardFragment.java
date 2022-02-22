@@ -21,7 +21,7 @@ import com.example.encardv1.interfaces.OnItemClickListener;
 import com.example.encardv1.pixabayviewmodel.PixaBayViewModel;
 
 
-import javax.inject.Inject;
+
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -29,8 +29,12 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainBoardFragment extends BaseFragment<FragmentMainBoardBinding> implements OnItemClickListener {
     ViewPagerAdapter adapter;
     PixaBayViewModel viewModel;
+    SharedPreferences sharedPreferences;
     PagerClient client;
 
+    public MainBoardFragment(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
+    }
 
     @Override
     public FragmentMainBoardBinding bind() {
@@ -49,16 +53,17 @@ public class MainBoardFragment extends BaseFragment<FragmentMainBoardBinding> im
 
     private void init() {
         binding.btnLets.setOnClickListener(view -> {
-            viewModel.setBoolean(true);
+            sharedPreferences.edit().putBoolean("isShow", true).apply();
             Navigation.findNavController(requireView()).navigate(R.id.wordsFragment);
         });
     }
 
     private void checkOnShow(){
-        if (viewModel.getBoolean()){
+        boolean isShow = sharedPreferences.getBoolean("isShow" , false);
+        if (isShow){
             Navigation.findNavController(requireView()).navigate(R.id.wordsFragment);
         }else {
-            viewModel.setBoolean(false);
+            sharedPreferences.edit().putBoolean("isShow", false).apply();
         }
     }
 
