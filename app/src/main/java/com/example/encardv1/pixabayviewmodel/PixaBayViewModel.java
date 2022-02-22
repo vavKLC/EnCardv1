@@ -1,11 +1,10 @@
 package com.example.encardv1.pixabayviewmodel;
 
-import android.content.SharedPreferences;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
+import com.example.encardv1.util.SharedPreferencesInj;
 import com.example.encardv1.network.model.Hits;
 import com.example.encardv1.repository.PixaBayRepository;
 
@@ -19,19 +18,28 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class PixaBayViewModel extends ViewModel {
     public MutableLiveData<List<Hits>> mutableLiveData = new MutableLiveData<>();
     PixaBayRepository repository;
+    SharedPreferencesInj sharedPreferencesInj;
 
+    public PixaBayViewModel(SharedPreferencesInj sharedPreferencesInj) {
+        this.sharedPreferencesInj = sharedPreferencesInj;
+    }
 
     @Inject
     public PixaBayViewModel(PixaBayRepository repository) {
         this.repository = repository;
     }
-
-
     public MutableLiveData<List<Hits>> getImages(String word){
         mutableLiveData = repository.getImages(word);
         return mutableLiveData;
     }
 
+    public boolean getBoolean(){
+        return sharedPreferencesInj.getBoolen();
+    }
+
+    public void setBoolean(boolean isShow){
+        sharedPreferencesInj.setBoolean(isShow);
+    }
 
 
 
