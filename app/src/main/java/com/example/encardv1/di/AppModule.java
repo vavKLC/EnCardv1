@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.example.encardv1.network.PixabayAPI;
 import com.example.encardv1.pixabayviewmodel.PixaBayViewModel;
 import com.example.encardv1.repository.PixaBayRepository;
+import com.example.encardv1.util.SharedPreferencesInj;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,8 +33,8 @@ public class AppModule {
     }
 
     @Provides
-    public static PixaBayViewModel provideViewModel(PixaBayRepository repository){
-        return new PixaBayViewModel(repository);
+    public static PixaBayViewModel provideViewModel(PixaBayRepository repository , SharedPreferencesInj sharedPreferencesInj){
+        return new PixaBayViewModel(repository , sharedPreferencesInj);
     }
 
     @Provides

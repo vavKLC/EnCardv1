@@ -20,13 +20,11 @@ public class PixaBayViewModel extends ViewModel {
     PixaBayRepository repository;
     SharedPreferencesInj sharedPreferencesInj;
 
-    public PixaBayViewModel(SharedPreferencesInj sharedPreferencesInj) {
-        this.sharedPreferencesInj = sharedPreferencesInj;
-    }
 
     @Inject
-    public PixaBayViewModel(PixaBayRepository repository) {
+    public PixaBayViewModel(PixaBayRepository repository , SharedPreferencesInj sharedPreferencesInj) {
         this.repository = repository;
+        this.sharedPreferencesInj = sharedPreferencesInj;
     }
     public MutableLiveData<List<Hits>> getImages(String word){
         mutableLiveData = repository.getImages(word);
