@@ -31,7 +31,8 @@ public class MainBoardFragment extends BaseFragment<FragmentMainBoardBinding> im
     PixaBayViewModel viewModel;
     SharedPreferences sharedPreferences;
     PagerClient client;
-
+    
+    @Inject
     public MainBoardFragment(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
     }
