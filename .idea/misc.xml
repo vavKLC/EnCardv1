@@ -5,11 +5,13 @@
       <map>
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.197" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/drawable/background_gradient.xml" value="0.197" />
+        <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/drawable/splash_screen.xml" value="0.197" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/drawable/splash_sreen.xml" value="0.197" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/fragment_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/fragment_category.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/fragment_main_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/fragment_word.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/world-PC/AndroidStudioProjects/EnCardv13/app/src/main/res/layout/image_holder_list.xml" value="0.36666666666666664" />
       </map>

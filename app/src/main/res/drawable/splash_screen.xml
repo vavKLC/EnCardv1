@@ -9,6 +9,6 @@
     <item android:top="120dp">
         <bitmap
             android:gravity="center"
-            android:src="@drawable/lets_do_it" />
+            android:src="@drawable/lets"/>
     </item>
 </layer-list>

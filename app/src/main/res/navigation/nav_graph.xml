@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/wordsFragment">
+    app:startDestination="@id/boardmainfragment">
 
     <fragment
         android:id="@+id/categoryFragment"
@@ -15,4 +15,9 @@
         android:name="com.example.encardv1.ui.fragments.WordsFragment"
         android:label="fragment_word"
         tools:layout="@layout/fragment_word" />
+    <fragment
+        android:id="@+id/boardmainfragment"
+        android:name="com.example.encardv1.ui.fragments.MainBoardFragment"
+        android:label="fragment_main_board"
+        tools:layout="@layout/fragment_main_board" />
 </navigation>

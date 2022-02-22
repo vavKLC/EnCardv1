@@ -1,7 +1,10 @@
 package com.example.encardv1.pixabayviewmodel;
 
+import android.content.SharedPreferences;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 
 import com.example.encardv1.network.model.Hits;
 import com.example.encardv1.repository.PixaBayRepository;
@@ -17,15 +20,19 @@ public class PixaBayViewModel extends ViewModel {
     public MutableLiveData<List<Hits>> mutableLiveData = new MutableLiveData<>();
     PixaBayRepository repository;
 
+
     @Inject
     public PixaBayViewModel(PixaBayRepository repository) {
         this.repository = repository;
     }
 
+
     public MutableLiveData<List<Hits>> getImages(String word){
         mutableLiveData = repository.getImages(word);
         return mutableLiveData;
     }
+
+
 
 
 }

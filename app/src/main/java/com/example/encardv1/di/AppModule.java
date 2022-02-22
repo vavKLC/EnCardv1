@@ -1,5 +1,11 @@
 package com.example.encardv1.di;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.annotation.NonNull;
+
 import com.example.encardv1.network.PixabayAPI;
 import com.example.encardv1.pixabayviewmodel.PixaBayViewModel;
 import com.example.encardv1.repository.PixaBayRepository;
@@ -30,11 +36,16 @@ public class AppModule {
         return new PixaBayViewModel(repository);
     }
 
+    @Provides
+    public static SharedPreferences provideSharedPreferences(Context context){
+        return context.getSharedPreferences("share" , Context.MODE_PRIVATE);
+    }
+
+
 
 
     @Provides
     public static PixabayAPI providePixabayAPI(OkHttpClient client){
-
         return new Retrofit.Builder().baseUrl("https://pixabay.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
@@ -52,10 +63,12 @@ public class AppModule {
                 .build();
     }
 
+    @NonNull
     @Provides
     public static Interceptor provideLoggingInterceptor(){
         return new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
     }
+
 
 }
