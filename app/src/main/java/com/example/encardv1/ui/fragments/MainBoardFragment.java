@@ -1,6 +1,5 @@
 package com.example.encardv1.ui.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,12 +28,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainBoardFragment extends BaseFragment<FragmentMainBoardBinding> implements OnItemClickListener {
     ViewPagerAdapter adapter;
     PixaBayViewModel viewModel;
-    SharedPreferences sharedPreferences;
     PagerClient client;
 
-    public MainBoardFragment(SharedPreferences sharedPreferences) {
-        this.sharedPreferences = sharedPreferences;
-    }
 
     @Override
     public FragmentMainBoardBinding bind() {
@@ -53,17 +48,16 @@ public class MainBoardFragment extends BaseFragment<FragmentMainBoardBinding> im
 
     private void init() {
         binding.btnLets.setOnClickListener(view -> {
-            sharedPreferences.edit().putBoolean("isShow", true).apply();
+            viewModel.setBoolean(true);
             Navigation.findNavController(requireView()).navigate(R.id.wordsFragment);
         });
     }
 
     private void checkOnShow(){
-        boolean isShow = sharedPreferences.getBoolean("isShow" , false);
-        if (isShow){
+        if (viewModel.getBoolean()){
             Navigation.findNavController(requireView()).navigate(R.id.wordsFragment);
         }else {
-            sharedPreferences.edit().putBoolean("isShow", false).apply();
+            viewModel.setBoolean(false);
         }
     }
 

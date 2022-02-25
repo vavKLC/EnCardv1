@@ -9,7 +9,15 @@
         android:id="@+id/categoryFragment"
         android:name="com.example.encardv1.ui.fragments.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_wordsFragment"
+            app:destination="@id/wordsFragment">
+            <argument
+                android:name="categoryName"
+                app:argType="String" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/wordsFragment"
         android:name="com.example.encardv1.ui.fragments.WordsFragment"

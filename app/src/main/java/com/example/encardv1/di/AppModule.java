@@ -1,21 +1,32 @@
 package com.example.encardv1.di;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.room.Room;
 
+import com.example.encardv1.App;
+import com.example.encardv1.db.AppDataBase;
+import com.example.encardv1.db.dao.CategoryDao;
+import com.example.encardv1.db.dao.WordDao;
+import com.example.encardv1.db.model.CategoryModel;
 import com.example.encardv1.network.PixabayAPI;
 import com.example.encardv1.pixabayviewmodel.PixaBayViewModel;
 import com.example.encardv1.repository.PixaBayRepository;
+import com.example.encardv1.util.RoomHelper;
 import com.example.encardv1.util.SharedPreferencesInj;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
+import dagger.hilt.android.qualifiers.ApplicationContext;
 import dagger.hilt.components.SingletonComponent;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -33,15 +44,14 @@ public class AppModule {
     }
 
     @Provides
-    public static PixaBayViewModel provideViewModel(PixaBayRepository repository , SharedPreferencesInj sharedPreferencesInj){
-        return new PixaBayViewModel(repository , sharedPreferencesInj);
+    public static PixaBayViewModel provideViewModel(PixaBayRepository repository , SharedPreferencesInj sharedPreferencesInj , RoomHelper roomHelper){
+        return new PixaBayViewModel(repository , sharedPreferencesInj , roomHelper);
     }
 
     @Provides
-    public static SharedPreferences provideSharedPreferences(Context context){
+    public static SharedPreferences provideSharedPreferences(@ApplicationContext Context context){
         return context.getSharedPreferences("share" , Context.MODE_PRIVATE);
     }
-
 
 
 
@@ -70,6 +80,27 @@ public class AppModule {
         return new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);
     }
+
+    //DataBase
+    @Provides
+    public static WordDao provideWordDao(AppDataBase appDataBase){
+        return appDataBase.wordDao();
+    }
+
+    @Provides
+    public static CategoryDao provideCategoryDao(AppDataBase appDataBase){
+        return appDataBase.categoryDao();
+    }
+
+    @Provides
+    @Singleton
+    public static AppDataBase provideAppDataBase(@ApplicationContext Context context){
+        return Room.databaseBuilder
+                (context , AppDataBase.class , "database")
+                .allowMainThreadQueries()
+                .build();
+    }
+    //------------------------------------------
 
 
 }
